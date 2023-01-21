@@ -1,3 +1,4 @@
+import { QueryResult } from "pg";
 import {connection}  from "../database/db.js";
 import { Movie } from "../protocols/movieProtocol.js";
 
@@ -23,8 +24,13 @@ export async function updateStatus(comment: string, id: number){
     `, [comment, id])
 }
 
-export async function deleteMovieById(id: number){
+export async function deleteMovieById(id: number): Promise<QueryResult>{
     return await connection.query(`
     DELETE FROM movie WHERE id = $1
     `, [id])
+}
+
+export async function platformCount():Promise<QueryResult<string[]>>{
+    return await connection.query(`
+    SELECT platform, COUNT(*) FROM movie GROUP BY platform`)
 }

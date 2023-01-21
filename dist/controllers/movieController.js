@@ -171,3 +171,26 @@ export function deleteMovie(req, res) {
         });
     });
 }
+export function getRanking(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var ranking, error_6;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, R.platformCount()];
+                case 1:
+                    ranking = _a.sent();
+                    if (ranking.rowCount === 0) {
+                        return [2 /*return*/, res.sendStatus(404)];
+                    }
+                    return [2 /*return*/, res.status(200).send(ranking.rows)];
+                case 2:
+                    error_6 = _a.sent();
+                    console.log(error_6);
+                    return [2 /*return*/, res.sendStatus(500)];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
