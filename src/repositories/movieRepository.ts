@@ -32,5 +32,5 @@ export async function deleteMovieById(id: number): Promise<QueryResult>{
 
 export async function platformCount():Promise<QueryResult<string[]>>{
     return await connection.query(`
-    SELECT platform, COUNT(*) FROM movie GROUP BY platform`)
+    SELECT platform, COUNT(*) FROM movie GROUP BY platform ORDER BY count DESC`)
 }

@@ -87,15 +87,11 @@ export function deleteMovieById(id) {
         });
     });
 }
-// export async function platformCount(){
-//     return await connection.query(`
-//     SELECT platform, COUNT(*) FROM movie GROUP BY platform`)
-// }
 export function platformCount() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, connection.query("\n    SELECT platform, COUNT(*) FROM movie GROUP BY platform")];
+                case 0: return [4 /*yield*/, connection.query("\n    SELECT platform, COUNT(*) FROM movie GROUP BY platform ORDER BY count DESC")];
                 case 1: return [2 /*return*/, _a.sent()];
             }
         });
